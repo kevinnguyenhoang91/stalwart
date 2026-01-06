@@ -20,12 +20,12 @@ vars:
   ARCH:
     source: env
     default: "linux/amd64"
-  TARGET:
-    source: env
-    default: "x86_64-unknown-linux-gnu"
-  BUILD_ENV:
-    source: env
-    default: ""
+  # TARGET:
+  #   source: env
+  #   default: "x86_64-unknown-linux-gnu"
+  # BUILD_ENV:
+  #   source: env
+  #   default: ""
   DOCKER_REGISTRY:
     source: env
     default: "ghcr.io"
@@ -92,7 +92,7 @@ profiles:
 images:
   stalwart-mail:
     image: "${DOCKER_REGISTRY}/${DOCKER_IMAGE}-dev"
-    dockerfile: ./Dockerfile.build.dev
+    dockerfile: ./Dockerfile
     context: ./
     tags:
       - "${GIT_SHORT_HASH}"
@@ -102,9 +102,9 @@ images:
         - "--platform"
         - "${ARCH}"
     buildArgs:
-      # TARGETPLATFORM: "${ARCH}"
-      TARGET: "${TARGET}"
-      BUILD_ENV: "${BUILD_ENV}"
+      TARGETPLATFORM: "${ARCH}"
+      # TARGET: "${TARGET}"
+      # BUILD_ENV: "${BUILD_ENV}"
 
 # This is a list of `pipelines` that DevSpace can execute (you can define your own)
 pipelines:
