@@ -1,0 +1,3 @@
+[submodule "twake/twake-flutter"]
+	path = twake/twake-flutter
+	url = git@github.com:kevinnguyenhoang91/tmail-flutter.git
